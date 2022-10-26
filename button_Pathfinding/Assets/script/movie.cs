@@ -115,8 +115,10 @@ public class movie : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position,_targetPosition,speed*Time.deltaTime);//двигаем обект в заданную точку
+        LineRend();
         if (transform.position == _targetPosition)//попадает в точку назначения и должен начать двигать камеру
         {
+            
             RemoveLine();
                       
             _isMoving = false;
@@ -124,6 +126,11 @@ public class movie : MonoBehaviour
             _camChangePos = true;
             
         }
+    }
+    private void LineRend()
+    {
+        Vector3 nowTimePos = transform.position;
+        line.SetPosition(0,nowTimePos) ;
     }
 
    
